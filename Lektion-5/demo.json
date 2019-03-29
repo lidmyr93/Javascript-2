@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "name": "Magnus Lidmyr",
+    "username": "magnus",
+    "email": "magnus.lidmyr@example.com",
+    "phone": "076-1659999",
+    "company": {
+        "name": "Nackademin AB",
+        "address": "Hässelby",
+        "website": "http://w3schools.com"
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery DogAPI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        html, body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .card-body > *{
+            text-transform: capitalize;
+        }
+        .vertical-align {
+         min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh; /* These two lines are counted as one 🙂       */
+  display: flex;
+  align-items: center;
+}
+    </style>
+</head>
+<body>  
+        <div class="vertical-align">
+            <div class="container">
+                <h1 id="demo">Tryck för randomuser</h1>
+                <div class="card" style="width: 18rem; display: none;">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text age "></p>
+                            <p class="card-text city"></p>
+                            <a href="" class="btn btn-primary">Contact Me </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+                
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        function randomUser(){
+            $.getJSON('https://randomuser.me/api/', function(data){
+                
+                let person = data.results[0];
+                $('img').attr('src', person.picture.large);
+                $('h5').text(person.name.first + ' ' + person.name.last);
+                $('.age').text('Age : ' + person.dob.age);
+                $('.city').text('City : ' + person.location.city);
+                $('.btn').attr('href', `mailto:${person.email}?Subject=demo`)
+                $('.card').hide().fadeIn(1000);
+                
+            })
+        }//randomUser
+                $('#demo').click(randomUser);
+                $('#demo').trigger('click');
+
+        });//ready
+    </script>
+</body>
+</html>

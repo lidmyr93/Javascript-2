@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jQuery Demo 3</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      #demo1 {
+        display: none;
+      }
+      .demo2{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Effekter i jQuery</h1>
+
+    <h2>Show och Hide</h2>
+    <button id="show" class="btn btn-outline-info">Visa</button>
+    <button id="hide" class="btn btn-outline-info">Dölj</button>
+
+    <div id="demo1">
+      <img src="https://picsum.photos/200" alt="" />
+    </div>
+
+    <h2>Toggle</h2>
+    <button id="demo2" class="btn btn-outline-info">Visa</button>
+    <div class="demo2">
+      <img src="https://picsum.photos/200" alt="" />
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        //Visa innehållet
+        $("#show").click(function() {
+          $("#demo1").show(500);
+        });
+        //Dölj innehållet innehållet
+        $("#hide").click(function() {
+          $("#demo1").hide(500);
+        });
+
+        //toggle
+        $('#demo2').click(function(){
+          $('.demo2').toggle(500);
+          $(this).text(function(i,text){
+            return text === 'Visa' ? 'Dölj' : 'Visa';
+          })
+        })
+      }); //READY
+    </script>
+    <script src="jQuery-demo-03.js"></script>
+  </body>
+</html>

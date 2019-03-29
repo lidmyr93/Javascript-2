@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery Demo 4</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+  <h1>jQuery Demo 4</h1>
+  <h2>Chaining jQuery Methods</h2>
+
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+        $('h1').hide().show(1000);
+
+        //Utan chaining
+        //undvik då detta är långsammare
+        $('h1').hide();
+        $('h1').show(1000);
+
+    });
+    </script>
+</body>
+</html>

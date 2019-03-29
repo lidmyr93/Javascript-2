@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .demo{
+                height: 200px;
+                width: 200px;
+                border: 1px solid black;
+                display: inline-block;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Övning 1</h1>
+    <h2>Övning 1 – Skriv ut en lista över alla användare
+            från JSONPlaceholder med hjälp av fetch() </h2>
+
+        <div id="demo"></div>
+    <script>
+        let card = document.getElementById('demo');
+        let cardinfo = '';
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            for(let i = 0; i < data.length; i++){
+                //h5 namn
+                //address
+                cardinfo += `<div class="demo">
+                        <h5>${data[i].name}</h5>
+                        <adress>
+                            ${data[i].address.street} <br>
+                            ${data[i].address.suite}<br>
+                            ${data[i].address.zipcode}<br>
+                            ${data[i].address.city}
+                        </adress>
+                             </div>`;
+            };
+            card.innerHTML = cardinfo;
+        })
+        /* .catch(err => console.log(err)); */
+        </script>
+</body>
+</html>

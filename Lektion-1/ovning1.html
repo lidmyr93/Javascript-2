@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Övning 1 jQuery</title>
+</head>
+<body>
+    <h1>Vad vill du handla idag?</h1>
+    <input type="text" id="newItem" autofocus>
+    <button id="addBtn">Lägg till</button>
+    <ul id="list"></ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            let $btn = $('#addBtn');
+            let $list = $('#list');
+            let $item = $('#newItem');
+
+            // Kör funktionen addItem vid klick på knappen
+            $btn.click(addItem);
+            //Kör funktionen addItem vid tryck på retur(enter)
+
+            $item.keypress(function(e){
+                if(e.which == 13){
+                    addItem();
+                }
+            });
+
+            function addItem() {
+                $value = $item.val() 
+                if($value !== ''){
+                    $list.append('<li>'+$value+'</li>');
+                    $item.val('');
+                }
+            }
+            
+            
+            
+           
+           
+
+        });//ready
+    </script>
+</body>
+</html>

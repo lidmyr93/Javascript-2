@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jQuery UI Demos Dialog</title>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  </head>
+  <body>
+   <h1>jQuery UI Dialog</h1>
+   <div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+      </div>
+      <button id="button">Press me</button>
+
+    <!-- 1. Länk till jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- 2. Länk till jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- 3. Egen Javascript -->
+    <script>
+        $( function() { //shorthand for document.ready
+            let $dialog =  $('#dialog');
+            $($dialog).dialog({
+                autoOpen : false,
+            })
+            $('#button').on('click', function(){
+                $($dialog).dialog('open');
+            })
+        }); //ready
+    </script>
+  </body>
+</html>

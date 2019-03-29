@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery DogAPI</title>
+</head>
+<body>
+    <h1>jQuery Ajax - Dog API</h1>
+    <h2>Hundraser</h2>
+    <ol id="demo"></ol>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.getJSON('https://dog.ceo/api/breeds/list/all',function(data){
+                console.log(data.message);
+                $.each(data.message, function(key, value){
+                    $('#demo').append('<li>' + key + '</li>');
+                }); 
+            });
+        });//ready
+    </script>
+</body>
+</html>

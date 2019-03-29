@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Övning1</title>
+</head>
+<body>
+    <h1>Övning 1 - Lektion 5</h1>
+    <h2>Ange dina favoritspråk</h2>
+    <input id="sprak" type="text">
+    <button id="btn">Lägg till</button>
+    <div id="print"></div>
+    <script>
+        let lang = document.getElementById('sprak');
+        let btn = document.getElementById('btn');
+        let print = document.getElementById('print');
+
+        btn.addEventListener('click', getName);
+        window.addEventListener('load', displayLang);
+        btn.addEventListener('click', displayLang);
+        
+            let array = localStorage.getItem('myarray') ? JSON.parse(localStorage.getItem('myarray')) : [];
+        function getName (){
+            array.push(lang.value)
+            let myJSON = JSON.stringify(array);
+            localStorage.setItem('myarray', myJSON);
+        }
+        function displayLang(){
+            let list = '<ol>';
+            let newArray = localStorage.getItem('myarray');
+            newArray = JSON.parse(newArray);
+
+            newArray.forEach(element => {
+                list += `<li>${element}</li>`;
+                console.log(element);
+            });
+            list += '</ol>';
+            print.innerHTML = list;
+        }
+        
+    
+    </script>
+</body>
+</html>

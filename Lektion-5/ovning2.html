@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Övning 1</h1>
+    <h2>Övning 1 – Skriv ut en lista över alla användare
+            från JSONPlaceholder med hjälp av fetch() </h2>
+
+        <table id="demo"></table>
+    <script>
+        let list = document.getElementById('demo');
+        let items = "<thead><tr><td>Name</td><td>Email</td></tr></thead>";
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            for(let i = 0; i < data.length; i++){
+                items += `<tr><td> ${data[i].name}</td><td>${data[i].email}</td></tr>`;
+            };
+            list.innerHTML = items;
+        })
+        .catch(err => console.log(err));
+        </script>
+</body>
+</html>

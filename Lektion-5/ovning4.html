@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    img{
+        display: block;
+        margin: 0 auto;
+        max-width: 700px;
+        max-height: 500px;
+    }
+</style>
+<body>
+    <h1>Dog API</h1>
+
+    <p>
+        https://dog.ceo/api/breed/
+        <select name="" id="dogname">
+        </select>
+        /images/random
+        <button id="btn">Fetch</button>
+    </p>
+    <img id="hund" src="" alt="">
+
+    <script>
+        let dogname = document.getElementById('dogname');
+        let picdog = document.getElementById('hund');
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', getImage);
+        let temp = '';
+        fetch('https://dog.ceo/api/breeds/list/all')
+        .then(response => response.json())
+        .then(data => selectdog(data));
+
+        function selectdog(data){
+            const breeds = Object.keys(data.message);//loops trough and gets the keys of data.message, copy them into an array
+            for(let i = 0; i < breeds.length; i++){
+                temp+= `<option value="${breeds[i]}">${breeds[i]}</option>`;
+            }
+            dogname.innerHTML = temp;
+        }
+        function getImage (){
+            let breed = dogname.value;
+            fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+            .then(response => response.json())
+            .then(data =>{
+                picdog.setAttribute('src', data.message );
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Övning 1</title>
+    <style>
+      .message {
+        color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#">
+      <div>
+        <label for="user"><b>Username</b></label> <br />
+        <input id="name" type="text" required /> <br />
+        <span class="message">The username must be at least 3 characters.</span>
+      </div>
+      <div>
+        <label for="pass"><b>Password </b></label> <br />
+        <input id="pass" type="password" required /> <br />
+        <span class="message">The password must be at least 3 characters.</span>
+      </div>
+      <input type="submit" value="Login" />
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // 1. Välj inputfält som har attributet required
+            // 2. Vid blur testa om fältet innehåller minst 3 tecken
+            // 3. Visa meddelandet som ligger efter det aktuella fältet
+            // 4. Dölj meddelandet om fältet innehåller minst 3 tecken
+            $('input[required]').keypress(function(){
+                //Ternary
+                ($(this).val().length < 3)? 
+                    $(this).siblings('span').show(500) : 
+                        $(this).siblings('span').hide(500);
+                //If-statement
+                /* if($(this).val().length < 3){
+                    $(this).siblings('span').css('display', 'block'); 
+                }
+                else{
+                    $(this).siblings('span').css('display', 'none');
+                } */
+            });
+            
+            
+            
+        });
+    </script>
+  </body>
+</html>
